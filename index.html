@@ -209,6 +209,33 @@
 
   .callout{background:var(--gold-soft);border:1px solid #E7D9B4;border-radius:var(--radius);padding:16px 18px;margin-bottom:18px;font-size:14.5px;color:#5d5230;line-height:1.6}
   .callout b{color:#3f3a22}
+  /* Numbered "what to do next" strip inside the practice modal */
+  .nextsteps{margin-top:12px;border:1px solid var(--line-strong);border-left:4px solid var(--red);border-radius:var(--radius);background:var(--paper);padding:14px 16px;display:none}
+  .nextsteps.show{display:block;animation:nsIn .25s ease}
+  @keyframes nsIn{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+  .nextsteps .ns-title{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--red);font-weight:700;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+  .nextsteps ol{margin:0;padding:0;list-style:none;counter-reset:ns;display:flex;flex-direction:column;gap:9px}
+  .nextsteps ol li{counter-increment:ns;display:flex;gap:11px;align-items:flex-start;font-size:14px;color:var(--slate);line-height:1.5}
+  .nextsteps ol li::before{content:counter(ns);flex:0 0 auto;width:22px;height:22px;background:var(--red);color:#fff;font-family:var(--sans);font-weight:700;font-size:12px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin-top:1px}
+  .nextsteps ol li b{color:var(--ink)}
+  .nextsteps .ns-code{font-family:var(--mono);font-size:12px;background:var(--bg);border:1px solid var(--line);border-radius:5px;padding:1px 5px;color:var(--slate)}
+  .nextsteps .ns-foot{margin-top:11px;padding-top:10px;border-top:1px dashed var(--line);font-size:12.5px;color:var(--muted);line-height:1.5}
+  .copybtn{margin-top:10px}
+  .copied-flag{color:var(--red-deep);font-weight:700}
+  /* First-run orientation banner */
+  .orient{position:relative;background:linear-gradient(180deg,#FFF9EE,var(--paper));border:1px solid #E7D9B4;border-radius:var(--radius);padding:16px 18px 15px;margin:16px 0 22px;box-shadow:var(--shadow)}
+  .orient h4{font-family:var(--serif);font-size:16px;color:var(--ink);margin:0 0 4px}
+  .orient .o-sub{font-size:13.5px;color:var(--slate);margin-bottom:12px}
+  .orient ol{margin:0;padding:0;list-style:none;counter-reset:orn;display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px}
+  .orient ol li{counter-increment:orn;display:flex;gap:9px;align-items:flex-start;font-size:13px;color:var(--slate);line-height:1.45}
+  .orient ol li::before{content:counter(orn);flex:0 0 auto;width:20px;height:20px;background:var(--gold);color:#fff;font-weight:700;font-size:11px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+  .orient ol li b{color:var(--ink)}
+  .orient .o-close{position:absolute;top:10px;right:12px;background:none;border:0;font-size:18px;line-height:1;color:var(--muted);cursor:pointer;padding:2px 6px;border-radius:6px}
+  .orient .o-close:hover{background:var(--bg);color:var(--ink)}
+  /* Dashboard empty-state */
+  .dash-empty{background:var(--bg);border:1px dashed var(--line-strong);border-radius:var(--radius);padding:14px 16px;margin-bottom:16px;font-size:13.5px;color:var(--slate);line-height:1.55}
+  .dash-empty b{color:var(--ink)}
+  #dash-parse-hint.err{color:var(--red-deep);font-weight:600}
   .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--ink);color:#fff;padding:11px 20px;border-radius:10px;font-size:14px;font-weight:600;opacity:0;pointer-events:none;transition:all .3s;z-index:120}
   .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
   footer{border-top:1px solid var(--line);padding:24px 0;color:var(--muted);font-size:13px}
@@ -239,6 +266,19 @@
 
 <main>
   <div class="wrap">
+    <!-- FIRST-RUN ORIENTATION (dismissible, remembered) -->
+    <div class="orient" id="orient" style="display:none">
+      <button class="o-close" id="orient-close" aria-label="Dismiss">&times;</button>
+      <h4>New here? How this works in 4 steps</h4>
+      <div class="o-sub">This is a self-contained trainer with an AI-coaching loop. Here's the full path:</div>
+      <ol>
+        <li><b>Browse &amp; open.</b> Pick any tab, click a question or scenario, and study the model answers.</li>
+        <li><b>Practice.</b> Hit <b>Practice</b> on any card, then speak or type your own answer.</li>
+        <li><b>Get AI coaching.</b> Click <b>Generate AI coaching prompt</b>, copy it, and paste it into your AI assistant (ChatGPT, Claude, Gemini). On-screen steps guide you.</li>
+        <li><b>Track readiness.</b> Paste the AI's reply into the <b>Readiness</b> tab to log the rep and watch your scores build.</li>
+      </ol>
+    </div>
+
     <!-- QUESTIONS -->
     <section class="panel" id="p-questions" role="tabpanel">
       <div class="panel-head"><h2>Question Bank</h2><p>120 manager-level questions across 12 categories. Click any question to reveal a spoken-style answer, the technical deep dive, a coaching note, and the red flag to avoid.</p></div>
@@ -309,7 +349,7 @@
       <div class="panel-head"><h2>Readiness Dashboard</h2><p>A closed loop: practice a question, generate the AI coaching prompt, then paste the AI's reply back here. The tool parses the scores and tracks your averages over time — the AI assesses, the tool tracks. No manual sliders.</p></div>
       <div class="callout">
         <b>How the loop works.</b> Open any question or scenario → <b>Practice</b> → record or type your answer →
-        <b>Generate AI coaching prompt</b> → paste it into ChatGPT or Claude → copy the model's full reply →
+        <b>Generate AI coaching prompt</b> → paste it into your AI assistant (ChatGPT, Claude, Gemini, etc.) → copy the model's full reply →
         paste it in the log box below. Your competency averages and overall level update automatically.
       </div>
       <div class="dash-grid">
@@ -330,6 +370,7 @@
           </div>
         </div>
         <div class="dash-card">
+          <div class="dash-empty" id="dash-empty"><b>No reps logged yet.</b> Your competency scores appear here after your first one. To log a rep: open any <b>Practice</b> card, generate the AI coaching prompt, run it in your AI assistant, then paste the AI's full reply into the box below and click <b>Parse &amp; log this rep</b>.</div>
           <div class="mlabel">Log a rep — paste the AI's full reply</div>
           <textarea id="dash-paste" class="mono" placeholder="Paste the complete AI response here (it must include the [READINESS SCORES] … [END READINESS SCORES] block)."></textarea>
           <div class="actions">
@@ -370,7 +411,20 @@
         <button class="btn" id="save-note">Save notes<span class="note-status" id="note-status"></span></button>
       </div>
       <textarea id="ai-prompt" class="mono" style="margin-top:10px;display:none" readonly></textarea>
-      <div class="hint" id="copy-hint" style="display:none">Copied to clipboard. Paste it into ChatGPT or Claude, then bring the reply to the Readiness Dashboard to log the rep.</div>
+
+      <div class="nextsteps" id="next-steps">
+        <div class="ns-title">✓ Prompt ready — here's what to do next</div>
+        <ol>
+          <li><b>Copy the prompt</b> above. <span id="copy-state" class="copied-flag"></span></li>
+          <li><b>Open your AI assistant</b> in a new browser tab — ChatGPT, Claude, Gemini, or any you use — and <b>paste the prompt</b> as a new message.</li>
+          <li>When it replies, <b>copy the AI's entire response</b>, including the <span class="ns-code">[READINESS SCORES]</span> block at the very bottom.</li>
+          <li>Come back here, open the <b>Readiness</b> tab, paste the reply into <b>“Log a rep,”</b> and click <b>Parse &amp; log this rep</b>.</li>
+        </ol>
+        <div class="actions">
+          <button class="btn primary copybtn" id="copy-prompt-again">Copy prompt again</button>
+        </div>
+        <div class="ns-foot">Your score dashboard updates automatically once the rep is logged. No mic? Typing your answer works exactly the same. Your data stays in this browser.</div>
+      </div>
     </div>
   </div>
 </div>
@@ -2623,7 +2677,8 @@ function openPractice(kind, id){
   $("#transcript").value = LS.get(noteKey, "");
   updateFiller();
   $("#ai-prompt").style.display = "none"; $("#ai-prompt").value = "";
-  $("#copy-hint").style.display = "none";
+  $("#next-steps").classList.remove("show");
+  $("#copy-state").textContent = "";
   $("#note-status").textContent = "";
   $("#modal").classList.add("open");
   document.body.style.overflow = "hidden";
@@ -2747,13 +2802,18 @@ function logRep(){
   const scores = parseScoreBlock(text);
   const numericKeys = Object.keys(scores).filter(k => scores[k] !== "NA");
   const matched = Object.keys(scores).length;
+  const hintEl = $("#dash-parse-hint");
   if(matched === 0){
-    $("#dash-parse-hint").innerHTML = "Couldn't find any scores. Make sure you pasted the full reply including the <b>[READINESS SCORES]</b> block.";
+    hintEl.classList.add("err");
+    hintEl.innerHTML = "⚠️ No scores detected. Paste the AI's <b>entire reply</b>, including the <b>[READINESS SCORES] … [END READINESS SCORES]</b> block at the bottom. If your AI didn't include it, ask it: “Please add the [READINESS SCORES] block exactly as specified in the prompt.”";
     toast("No scores found — paste the full AI reply."); return;
   }
   if(numericKeys.length === 0){
-    toast("Found the block, but every line was NA — nothing to log."); return;
+    hintEl.classList.add("err");
+    hintEl.innerHTML = "Found the block, but every competency was marked <b>NA</b> — nothing to log for this rep.";
+    toast("Every line was NA — nothing to log."); return;
   }
+  hintEl.classList.remove("err");
   const reps = getReps();
   reps.push({ ts: Date.now(), scores, prompt: (currentPractice && currentPractice.prompt) || "" });
   setReps(reps);
@@ -2805,6 +2865,7 @@ function renderDashboard(){
     </div>`;
   }).join("");
   $("#reps-line").textContent = `Based on ${contributingReps} logged rep${contributingReps===1?"":"s"}.`;
+  const empty = $("#dash-empty"); if(empty) empty.style.display = anyReps ? "none" : "block";
 }
 
 /* export / import / reset */
@@ -2865,10 +2926,15 @@ function wireGlobalEvents(){
     const text = buildCoachingPrompt();
     const box = $("#ai-prompt"); box.style.display="block"; box.value = text;
     const ok = await copyText(text);
-    $("#copy-hint").style.display = "block";
-    $("#copy-hint").textContent = ok ? "Copied to clipboard. Paste it into ChatGPT or Claude, then bring the reply to the Readiness Dashboard to log the rep."
-                                     : "Select all and copy this prompt, then paste it into ChatGPT or Claude.";
-    toast(ok ? "Coaching prompt copied." : "Coaching prompt ready — copy it.");
+    $("#next-steps").classList.add("show");
+    $("#copy-state").textContent = ok ? "Copied to your clipboard." : "Select the text above and copy it (Ctrl/Cmd+C).";
+    $("#next-steps").scrollIntoView({ behavior: "smooth", block: "nearest" });
+    toast(ok ? "Coaching prompt copied — follow the steps." : "Coaching prompt ready — copy it.");
+  });
+  $("#copy-prompt-again").addEventListener("click", async () => {
+    const ok = await copyText($("#ai-prompt").value);
+    $("#copy-state").textContent = ok ? "Copied again." : "Select the text above and copy it (Ctrl/Cmd+C).";
+    toast(ok ? "Prompt copied." : "Copy it manually from the box above.");
   });
 
   $("#dash-log").addEventListener("click", logRep);
@@ -2877,6 +2943,13 @@ function wireGlobalEvents(){
   $("#import-btn").addEventListener("click", () => $("#import-file").click());
   $("#import-file").addEventListener("change", e => { if(e.target.files[0]) importProgress(e.target.files[0]); e.target.value=""; });
   $("#reset-btn").addEventListener("click", resetAll);
+
+  // First-run orientation banner (shown once, remembered)
+  if(!LS.get("ops_orient_dismissed", "")){ $("#orient").style.display = "block"; }
+  $("#orient-close").addEventListener("click", () => {
+    $("#orient").style.display = "none";
+    LS.set("ops_orient_dismissed", "1");
+  });
 }
 
 function init(){
