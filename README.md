@@ -4,7 +4,7 @@
 
 **Full-Time MBA Program · David Eccles School of Business · Career Readiness Studio**
 
-**▶ Live tool:** **[Intv Playbook - OSC_vc](https://coryjburk.github.io/intv-playbook-osc_vc/)**
+**▶ Live tool:** **[Intv Playbook - OSC_vC](https://coryjburk.github.io/intv-playbook-osc_vc/)**
 
 ---
 
