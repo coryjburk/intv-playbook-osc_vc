@@ -4,7 +4,7 @@
 
 **Full-Time MBA Program · David Eccles School of Business · Career Readiness Studio**
 
-**▶ Live tool:** [Intv Playbook - OSC_vc](https://coryjburk.github.io/intv-playbook-osc_vc/)
+**▶ Live tool:** **[Intv Playbook - OSC_vc](https://coryjburk.github.io/intv-playbook-osc_vc/)**
 
 ---
 
@@ -235,19 +235,6 @@ The Readiness tab has three data-management buttons:
 **Phase 5 — Pre-interview day.** Review the Battlecard groups, run the Red Flags checklist, and warm up with 2–3 Leadership prompts in practice mode. Your current Readiness level is your honest baseline.
 
 > 💡 **One rep a day beats a weekend marathon.** The competency averages are most useful when built from varied questions across categories. Spread practice across all eight tabs over days, not hours.
-
----
-
-## Deploying to GitHub Pages
-
-Hosting the tool on GitHub Pages gives you a clean `https://` URL — which enables the microphone and lets you share it.
-
-1. Add the HTML file to your repository, named **`index.html`**.
-2. Go to **Settings → Pages**.
-3. Set **Source** appropriately (Deploy from a branch → `main` → `/ (root)`, or GitHub Actions if you use a custom workflow), and Save.
-4. The tool goes live at `https://<username>.github.io/<repo-name>/` within about a minute.
-
-> If a deploy fails with *"Deployment failed, try again later,"* that's usually a transient GitHub infrastructure error — re-run the failed job; no code change needed.
 
 ---
 
