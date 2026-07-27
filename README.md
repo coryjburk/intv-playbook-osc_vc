@@ -297,4 +297,5 @@ Use the Category and Difficulty filters to target exactly where you need reps.
 
 ---
 
-<sub>Full-Time MBA Program · David Eccles School of Business · Career Readiness Studio — Operations & Supply Chain Manager Interview Playbook</sub>
+_<sub>Developed by Cory Burk, Senior Manager, Program Management · Full-Time MBA Program · David Eccles School of Business.
+© 2026 University of Utah, David Eccles School of Business. All rights reserved.</sub>_
