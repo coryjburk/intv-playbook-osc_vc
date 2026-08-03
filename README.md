@@ -1,6 +1,6 @@
 # Operations & Supply Chain Manager — Interview Playbook
 
-> Practice the full arc of a manager interview — diagnose, quantify, lead, and recommend — across manufacturing, planning & S&OP, logistics, procurement, and continuous improvement. One self-contained HTML file. No install, no account, works offline.
+> Practice the full arc of a manager interview — diagnose, quantify, lead, and recommend — across manufacturing, planning & OSC, logistics, procurement, and continuous improvement. One self-contained HTML file. No install, no account, works offline.
 
 **Full-Time MBA Program · David Eccles School of Business · Career Readiness Studio**
 
@@ -78,7 +78,7 @@ The **Questions**, **Scenarios**, **Frameworks**, **Quant Drills**, and **Leader
 
 **Questions** also have two dropdowns:
 
-- **Category** — 12 categories: Leadership & People Management; Behavioral / Situational (STAR); Operations Strategy & Fundamentals; Lean / Continuous Improvement; Process Improvement & Root-Cause Problem Solving; Inventory Management & Optimization; Demand Planning, Forecasting & S&OP; Procurement & Supplier Management; Logistics, Distribution & Network Design; Manufacturing / Production & Capacity; Quality Management, Metrics & KPIs; Supply Chain Strategy, Risk, Resilience & Digital/Automation.
+- **Category** — 12 categories: Leadership & People Management; Behavioral / Situational (STAR); Operations Strategy & Fundamentals; Lean / Continuous Improvement; Process Improvement & Root-Cause Problem Solving; Inventory Management & Optimization; Demand Planning, Forecasting & OSC; Procurement & Supplier Management; Logistics, Distribution & Network Design; Manufacturing / Production & Capacity; Quality Management, Metrics & KPIs; Supply Chain Strategy, Risk, Resilience & Digital/Automation.
 - **Difficulty** — see below.
 
 **Scenarios** have a Difficulty dropdown. Combine search with dropdowns to target exactly what you want to work on.
