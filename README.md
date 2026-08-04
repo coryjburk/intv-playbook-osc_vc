@@ -1,6 +1,6 @@
-# Operations & Supply Chain Manager — Interview Playbook
+# Operations & Supply Chain Manager - Interview Playbook
 
-> Practice the full arc of a manager interview — diagnose, quantify, lead, and recommend — across manufacturing, planning & OSC, logistics, procurement, and continuous improvement. One self-contained HTML file. No install, no account, works offline.
+> Practice the full arc of a manager interview — diagnose, quantify, lead, and recommend - across manufacturing, planning & OSC, logistics, procurement, and continuous improvement. One self-contained HTML file. No install, no account, works offline.
 
 **Full-Time MBA Program · David Eccles School of Business · Career Readiness Studio**
 
